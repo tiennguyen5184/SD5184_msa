@@ -4,7 +4,8 @@ pipeline {
         stage('Hello') {
             steps {
                script {
-                docker ps
+                sh 'whoami'
+                // docker ps
             }
         }
     }
