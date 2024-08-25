@@ -5,7 +5,7 @@ pipeline {
             steps {
                script {
                 sh 'whoami'
-                // docker ps
+                docker ps
                }
             }
         }
