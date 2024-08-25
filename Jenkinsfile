@@ -8,12 +8,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/your-repo/hello-world.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 script {
