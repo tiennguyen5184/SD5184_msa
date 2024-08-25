@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_CREDENTIALS = credentials('90eb4d03-9c24-4e7d-b4f9-426760a790a8')
+        AWS_CREDENTIALS = credentials('aws-credentials')
         ECR_REPO_URI = "public.ecr.aws/y5w7f2k8/sd5184_msa"
         IMAGE_TAG = "hello-world:${env.BUILD_ID}"
     }
@@ -19,7 +19,7 @@ pipeline {
         stage('Login to ECR') {
             steps {
                 script {
-                    withAWS(credentials: '90eb4d03-9c24-4e7d-b4f9-426760a790a8', region: 'us-east-1') {
+                    withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
                         ecrLogin()
                     }
                 }
