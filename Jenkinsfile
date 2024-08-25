@@ -11,7 +11,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("${ECR_REPO_URI}:${IMAGE_TAG}")
+                    docker.build("hello-world:${IMAGE_TAG}")
                 }
             }
         }
