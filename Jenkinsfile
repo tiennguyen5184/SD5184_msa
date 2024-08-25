@@ -6,6 +6,7 @@ pipeline {
                script {
                 sh 'whoami'
                 // docker ps
+               }
             }
         }
     }
