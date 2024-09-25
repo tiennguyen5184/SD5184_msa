@@ -2,11 +2,12 @@ pipeline {
     agent any
 
     environment {
-        AWS_CREDENTIALS = credentials('aws-credentials')
+        region = us-east-1
+        account-id=
         ECR_REPO_URI = "public.ecr.aws/y5w7f2k8/sd5184_msa"
         IMAGE_TAG = "hello-world:${env.BUILD_ID}"
     }
-
+    
     stages {
         stage('Build Docker Image') {
             steps {
@@ -19,12 +20,7 @@ pipeline {
         stage('Login to ECR') {
             steps {
                 script {
-                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', 
-                                      credentialsId: 'aws-credentials', 
-                                      accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
-                                      secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-                        sh 'aws ecr get-login-password --region region | docker login --username AWS --password-stdin ${ECR_REPO_URI}'
-                    }
+                   aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
                 }
             }
         }
@@ -32,7 +28,8 @@ pipeline {
         stage('Push to ECR') {
             steps {
                 script {
-                    docker.image("${ECR_REPO_URI}:${IMAGE_TAG}").push()
+                    docker tag hello-world public.ecr.aws/y5w7f2k8/sd5184_msa/helloword:latest
+                    docker push public.ecr.aws/y5w7f2k8/sd5184_msa/helloword:latest
                 }
             }
         }
