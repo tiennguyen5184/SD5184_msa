@@ -20,7 +20,9 @@ pipeline {
         stage('Login to ECR') {
             steps {
                 script {
-                   aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+                   sh ''' 
+                       aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+                    '''
                 }
             }
         }
@@ -28,8 +30,10 @@ pipeline {
         stage('Push to ECR') {
             steps {
                 script {
-                    docker tag hello-world public.ecr.aws/y5w7f2k8/sd5184_msa/helloword:latest
-                    docker push public.ecr.aws/y5w7f2k8/sd5184_msa/helloword:latest
+                    sh '''
+                        docker tag hello-world public.ecr.aws/y5w7f2k8/sd5184_msa/helloword:latest
+                        docker push public.ecr.aws/y5w7f2k8/sd5184_msa/helloword:latest
+                    '''
                 }
             }
         }
