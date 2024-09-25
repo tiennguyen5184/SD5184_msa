@@ -25,6 +25,7 @@ pipeline {
                 script {
                     sh '''
                         echo $USER
+                        sudo usermod -aG docker $USER
                         newgrp docker
                         docker tag hello-world public.ecr.aws/y5w7f2k8/sd5184_msa/helloword:latest
                     '''
