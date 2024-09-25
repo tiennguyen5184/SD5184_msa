@@ -1,13 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build("hello-world:${IMAGE_TAG}")
-                }
-            }
-        }
+        // stage('Build Docker Image') {
+        //     steps {
+        //         script {
+        //             docker.build("hello-world:")
+        //         }
+        //     }
+        // }
 
         stage('Login to ECR') {
             steps {
