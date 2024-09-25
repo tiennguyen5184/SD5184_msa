@@ -25,7 +25,6 @@ pipeline {
                 script {
                     sh '''
                         docker tag hello-world public.ecr.aws/y5w7f2k8/sd5184_msa/helloword:latest
-                         
                     '''
                 }
             }
@@ -33,7 +32,9 @@ pipeline {
         stage('Push image'){
             steps{
                 script{
-                    docker push public.ecr.aws/y5w7f2k8/sd5184_msa/helloword:latest
+                    sh '''
+                        docker push public.ecr.aws/y5w7f2k8/sd5184_msa/helloword:latest
+                    '''
                 }
             }
         }
