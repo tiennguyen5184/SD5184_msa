@@ -33,7 +33,7 @@ pipeline {
             steps{
                 script{
                     sh '''
-                        docker push public.ecr.aws/y5w7f2k8/sd5184_msa/helloword:latest
+                        docker push public.ecr.aws/y5w7f2k8/sd5184_msa
                     '''
                 }
             }
