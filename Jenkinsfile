@@ -1,13 +1,5 @@
 pipeline {
     agent any
-
-    environment {
-        region = us-east-1
-        account-id=
-        ECR_REPO_URI = "public.ecr.aws/y5w7f2k8/sd5184_msa"
-        IMAGE_TAG = "hello-world:${env.BUILD_ID}"
-    }
-    
     stages {
         stage('Build Docker Image') {
             steps {
