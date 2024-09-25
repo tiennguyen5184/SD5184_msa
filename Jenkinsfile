@@ -24,6 +24,7 @@ pipeline {
             steps {
                 script {
                     sh '''
+                        echo $USER
                         newgrp docker
                         docker tag hello-world public.ecr.aws/y5w7f2k8/sd5184_msa/helloword:latest
                     '''
