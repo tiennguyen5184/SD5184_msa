@@ -15,7 +15,7 @@ variables:
   containerRegistry: 'sd5184.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
-
+pool:
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
