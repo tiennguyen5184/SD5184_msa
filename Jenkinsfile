@@ -9,7 +9,7 @@ pipeline {
                         sh ''' 
                             ls
                             # cd src/frontend/Dockerfile
-                            docker build src/frontend/Dockerfile -t public.ecr.aws/y5w7f2k8/sd5184_msa_frontend:latest
+                            docker build -t public.ecr.aws/y5w7f2k8/sd5184_msa_frontend:latest
                             # aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
                             # docker push public.ecr.aws/y5w7f2k8/sd5184_msa_frontend
                             '''
