@@ -8,10 +8,10 @@ pipeline {
                         script {
                         sh ''' 
                             ls
-                            # cd src/frontend/Dockerfile
+                            cd src/frontend/Dockerfile
                             docker build -t public.ecr.aws/y5w7f2k8/sd5184_msa_frontend:latest src/frontend/
-                            # aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
-                            # docker push public.ecr.aws/y5w7f2k8/sd5184_msa_frontend
+                            aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+                            docker push public.ecr.aws/y5w7f2k8/sd5184_msa_frontend
                             '''
                         }
                     }
@@ -20,10 +20,10 @@ pipeline {
                     steps {
                         script {
                         sh ''' 
-                            # cd src/backend/Dockerfile
-                            # docker build -t public.ecr.aws/y5w7f2k8/sd5184_msa_backend:latest
-                            # aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws .
-                            # docker push public.ecr.aws/y5w7f2k8/sd5184_msa_backend
+                            cd src/backend/Dockerfile
+                            docker build -t public.ecr.aws/y5w7f2k8/sd5184_msa_backend:latest
+                            aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws .
+                            docker push public.ecr.aws/y5w7f2k8/sd5184_msa_backend
                             '''
                         }
                     }
